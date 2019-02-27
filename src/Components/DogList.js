@@ -1,0 +1,29 @@
+import React ,{Component} from 'react'
+import { Link } from 'react-router-dom'
+
+export default class DogList extends Component{
+   
+
+    renderDogBreed(breed) {
+        return <li key={breed}>
+  <Link to={ `/dog-breeds/${breed}` }>{breed}</Link>
+        </li>
+      }
+
+
+
+
+    render(){
+        const{dogBreeds} = this.props
+        return(
+            <div className = "dog-list">
+            <h1>Dog List</h1>
+{!dogBreeds && 'Loading......'}
+
+                { dogBreeds && 
+                <ul>{dogBreeds.map(this.renderDogBreed)}</ul>}
+            </div>
+
+        )
+    }
+}
